@@ -1,1 +1,3 @@
 This Ansible playbook will provide a complete set of firewall rules for RedHat-based distros(saving the rules to a file is distro-specific). It flushes the existing rules first, then adds a rule for each item in firewall_whitelist_ip_port_proto. This list assumes the following fields in each item: "src_ip"(the source IP address), "dest"(the destination port), "proto"(the protocol used).
+
+Additionally, you'll want to change firewall/vars/main.yml values to suit your system's configuration for iptables location and filter chain name.
