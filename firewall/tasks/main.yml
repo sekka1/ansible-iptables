@@ -6,7 +6,7 @@
   command: iptables -F
 
 - name: open the desired iptables ports on the specified hosts
-  shell: "iptables -A INPUT -p {{ item.proto }} -m {{ item.proto }} -s {{ item.src_ip }} --dport {{ item.dest }} -j ACCEPT"
+  shell: "iptables -A RH-Firewall-1-INPUT -p {{ item.proto }} -m {{ item.proto }} -s {{ item.src_ip }} --dport {{ item.dest }} -j ACCEPT"
   sudo: yes
   with_items: 
     - "{{ firewall_whitelist_ip_port }}"
