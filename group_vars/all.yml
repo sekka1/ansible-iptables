@@ -1,0 +1,5 @@
+firewall_whitelist_ip_port_proto:
+  - { src_ip: "1.1.1.1", dest: "2222", proto: "tcp" }
+  - { src_ip: "2.2.2.2", dest: "22", proto: "tcp" }
+  - { src_ip: "3.3.3.3", dest: "1000", proto: "udp" }
+  - { src_ip: "4.4.4.4", dest: "2000", proto: "udp" }
