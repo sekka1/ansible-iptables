@@ -1,0 +1,16 @@
+---
+# This playbook flushes existing iptables rules, then adds new ones based on the contents of firewall_whitelist_ip_port_proto
+# in group_vars/all
+- name: flush existing rules
+  sudo: yes
+  command: iptables -F
+
+- name: open the desired iptables ports on the specified hosts
+  shell: "iptables -A INPUT -p {{ item.proto }} -m {{ item.proto }} -s {{ item.src_ip }} --dport {{ item.dest }} -j ACCEPT"
+  sudo: yes
+  with_items: 
+    - "{{ firewall_whitelist_ip_port }}"
+
+- name: save iptables
+  command: service iptables save
+  sudo: yes
